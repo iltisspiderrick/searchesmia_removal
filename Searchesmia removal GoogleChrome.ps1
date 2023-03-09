@@ -31,22 +31,22 @@ Unregister-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \ -Confirm:$false
 # at last the registry will be sanatized
 
 if (Test-Path $reg1) {
-Remove-Item $reg1
+Remove-Item $reg1 -Recurse
 }
 if (Test-Path $reg2) {
-Remove-Item $reg2
+Remove-Item $reg2 -Recurse
 }
 if (Test-Path $reg3) {
-Remove-Item $reg3
+Remove-Item $reg3 -Recurse
 }
 if (Test-Path $reg4) {
-Remove-Item $reg4
+Remove-Item $reg4 -Recurse
 }
 if (Test-Path $reg5) {
-Remove-Item $reg5
+Remove-Item $reg5 -Recurse
 }
 if (Test-Path $reg6) {
-Remove-Item $reg6
+Remove-Item $reg6 -Recurse
 }
 
 if ((Get-ItemProperty -Path $reg7 -Name "AppInit_DLLs").AppInit_DLLs -ne "") {
