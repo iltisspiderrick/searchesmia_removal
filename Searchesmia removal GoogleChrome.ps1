@@ -11,9 +11,9 @@ $reg7 = "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersi
 
 # first the Tast will be stopped and deactived
 
-if (Get-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \ -ErrorAction SilentlyContinue) {
-Stop-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \
-Disable-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \
+if (Get-ScheduledTask -TaskName "GoogleUpdate" -TaskPath "\" -ErrorAction SilentlyContinue) {
+Stop-ScheduledTask -TaskName "GoogleUpdate" -TaskPath "\"
+Disable-ScheduledTask -TaskName "GoogleUpdate" -TaskPath "\"
 }
 
 # now the all instances of chrome will be forcefully closed
@@ -24,8 +24,8 @@ Stop-Process -Name "chrome" -Force
 
 # the fake chrome-task will now be removed
 
-if (Get-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \ -ErrorAction SilentlyContinue) {
-Unregister-ScheduledTask -TaskName "GoogleUpdate" -TaskPath \ -Confirm:$false
+if (Get-ScheduledTask -TaskName "GoogleUpdate" -TaskPath "\" -ErrorAction SilentlyContinue) {
+Unregister-ScheduledTask -TaskName "GoogleUpdate" -TaskPath "\" -Confirm:$false
 }
 
 # all the files used to install the extension are beeing removed
